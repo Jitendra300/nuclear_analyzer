@@ -190,12 +190,25 @@ def allAPI(lat, lon, radius):
     else:
         time_score = 14
 
+    result_score = ""
+
+    if(nuclear_score <=2 and time_score >= 10):
+        result_score="Not Preferrable"
+    if(nuclear_score >= 7 and time_score <= 10):
+        result_score="Preferrable"
+    elif(nuclear_score < 5 and time_score >= 10):
+        result_score="Not Preferrable"
+    else:
+        result_score="Not Preferrable"
+
+
     return jsonify({
         'number_of_water_bodies': water_bodies_api_value,
         'number_of_forests': forest_api_value,
         'number_of_highways': highways_api_value,
         'nuclear_score': nuclear_score,
-        'time_score':time_score
+        'time_score':time_score,
+        'result_score':result_score
     })
     
 

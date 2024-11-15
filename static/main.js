@@ -365,8 +365,9 @@ map.on('click', function(e) {
                 <b>Num Of Water Bodies:</b> ${data.number_of_water_bodies}<br>
                 <b>Num Of Parks/Forests:</b> ${data.number_of_forests}<br>
                 <b>Num Of Highways:</br> ${data.number_of_highways}<br>
-                <b>Nuclear Analysis Score: </br> ${data.nuclear_score}<br>
-                <b>Time Score: </br> ${data.time_score}<br>
+                <b>NPP Compatibility Score: </br> ${data.nuclear_score}<br>
+                <b>Time to build the plant: </br> ${data.time_score}<br>
+                <b>Result: </br>${data.result_score}<br>
             `).openPopup();
         
 
@@ -377,10 +378,11 @@ map.on('click', function(e) {
                 <h4> Number of Water Bodies: ${data.number_of_water_bodies}</h4>
                 <h4> Number of Parks/Forest: ${data.number_of_forests}</h4>
                 <h4> Number of Highways: ${data.number_of_highways}</h4>
-                <h4> Nuclear Analysis Score: ${data.nuclear_score}</h4>
-                <h4> Time Score: ${data.time_score}</h4>
-                <br><br><br>
-                <p> Note the time given above is the construction and planning time. Regluation, Approval and all are skipped. </p>
+                <h4> NPP Compatibility Score: ${data.nuclear_score}</h4>
+                <h4> Time to build the plant: ${data.time_score}</h4>
+                <h4> Result: ${data.result_score}</h4>
+                <br><br><br><br>
+                <p> Note the time given above is the construction and planning time. Regluation, Approval and all are skipped as they are highly uncertain. </p>
             `;
     }).fail(function() {
         alert("Error fetching data. Please try again later.");
