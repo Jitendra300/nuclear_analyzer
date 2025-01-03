@@ -360,30 +360,17 @@ map.on('click', function(e) {
 
     $.getJSON(`/allAPI/${lat}&${lon}&${radius}`, function(data) {
         // Create a marker for the clicked location
+        let resultColor = data.result_score === "Not Preferrable" ? "red" : "green";
         lastMarker = L.marker([lat, lon]).addTo(map);
         lastMarker.bindPopup(`
                 <b>Num Of Water Bodies:</b> ${data.number_of_water_bodies}<br>
                 <b>Num Of Parks/Forests:</b> ${data.number_of_forests}<br>
-                <b>Num Of Highways:</br> ${data.number_of_highways}<br>
-                <b>NPP Compatibility Score: </br> ${data.nuclear_score}<br>
-                <b>Time to build the plant: </br> ${data.time_score}<br>
-                <b>Result: </br>${data.result_score}<br>
+                <b>Num Of Highways:</b> ${data.number_of_highways}<br>
+                <b>NPP Compatibility Score:</b> ${data.nuclear_score}/10<br>
+                <b>Time to build the plant:</b> ${data.time_score} Yrs<br>
+                <b>Result:</b> <span style="color: ${resultColor};">${data.result_score}</span><br>
             `).openPopup();
         
-
-        // Update the info panel with the results
-        document.getElementById('river-details').innerHTML = `
-                <h4> Latitude: ${lat} </h4>
-                <h4> Longitude: ${lon} </h4>
-                <h4> Number of Water Bodies: ${data.number_of_water_bodies}</h4>
-                <h4> Number of Parks/Forest: ${data.number_of_forests}</h4>
-                <h4> Number of Highways: ${data.number_of_highways}</h4>
-                <h4> NPP Compatibility Score: ${data.nuclear_score}</h4>
-                <h4> Time to build the plant: ${data.time_score}</h4>
-                <h4> Result: ${data.result_score}</h4>
-                <br><br><br><br>
-                <p> Note the time given above is the construction and planning time. Regluation, Approval and all are skipped as they are highly uncertain. </p>
-            `;
     }).fail(function() {
         alert("Error fetching data. Please try again later.");
     });

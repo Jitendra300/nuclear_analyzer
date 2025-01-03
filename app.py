@@ -170,15 +170,17 @@ def allAPI(lat, lon, radius):
         nuclear_score = 0
     elif(highways_api_value > 5 and water_bodies_api_value > 5 and forest_api_value == 0):
         nuclear_score = 10
-    elif(forest_api_value <= 0 and (highways_api_value > 1 and water_bodies_api_value > 1)):
+    elif(forest_api_value <= 1 and (highways_api_value > 1 and water_bodies_api_value > 1)):
         nuclear_score = 8
-    elif(forest_api_value >= 3):
+    elif(forest_api_value >= 50):
+        nuclear_score = 2
+    elif(highways_api_value >= 20 and water_bodies_api_value >= 1 and forest_api_value <= 2):
+        nuclear_score = 9
+    elif(forest_api_value >= 3 and water_bodies_api_value <= 1 and highways_api_value <= 2):
         nuclear_score = 2
     else:
         nuclear_score = 5
 
-    if(nuclear_score == 0):
-        time_score = 0
     if(highways_api_value == 0 or water_bodies_api_value == 0):
         time_score = 18
     elif(highways_api_value >= 5 and water_bodies_api_value >= 2 and nuclear_score >= 8):
@@ -192,7 +194,7 @@ def allAPI(lat, lon, radius):
 
     result_score = ""
 
-    if(nuclear_score <=2 and time_score >= 10):
+    if(nuclear_score <= 2 and time_score >= 10):
         result_score="Not Preferrable"
     if(nuclear_score >= 7 and time_score <= 10):
         result_score="Preferrable"
