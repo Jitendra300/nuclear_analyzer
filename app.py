@@ -205,6 +205,8 @@ def allAPI(lat, lon, radius):
 
 
     return jsonify({
+        'latitude': lat,
+        'longitude': lon,
         'number_of_water_bodies': water_bodies_api_value,
         'number_of_forests': forest_api_value,
         'number_of_highways': highways_api_value,

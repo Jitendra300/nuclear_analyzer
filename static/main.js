@@ -363,11 +363,13 @@ map.on('click', function(e) {
         let resultColor = data.result_score === "Not Preferrable" ? "red" : "green";
         lastMarker = L.marker([lat, lon]).addTo(map);
         lastMarker.bindPopup(`
+                <b>Latitude:</b> ${data.latitude}<br>
+                <b>Longitude:</b> ${data.longitude}<br>
                 <b>Num Of Water Bodies:</b> ${data.number_of_water_bodies}<br>
                 <b>Num Of Parks/Forests:</b> ${data.number_of_forests}<br>
                 <b>Num Of Highways:</b> ${data.number_of_highways}<br>
                 <b>NPP Compatibility Score:</b> ${data.nuclear_score}/10<br>
-                <b>Time to build the plant:</b> ${data.time_score} Yrs<br>
+                <b>Time to build the plant:</b> ${data.time_score} Years<br>
                 <b>Result:</b> <span style="color: ${resultColor};">${data.result_score}</span><br>
             `).openPopup();
         
