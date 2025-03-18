@@ -3,48 +3,56 @@
 <head>
     <title>NPP India</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/popup.css" />
     <style>
-        #map { height: 500px; width: 100%; }
+      html, body{
+	  height: 100%;
+	  margin: 0;
+	  padding: 0;
+	  overflow: hidden;
+      }
+      #map {
+	  height: 100vh;
+	  width: 100vw;
+	  margin: 0;
+	  padding: 0;
+	  border: none;
+      }
+      #info-panel {
+	  width: 24%;
+	  height: 500px;
+	  overflow-y: auto;
+	  padding: 10px;
+	  border: 1px solid #ddd;
+	  background-color: #f9f9f9;
+	  float: right;
+      }
     </style>
 </head>
 <body>
+  <div id="map"></div>
   
-  <!-- <a href="/nuclear_sites" target="_blank" color='inherit'> -->
-  <!--   <h2>gonuclear.onrender.com</h2>   -->
-  <!-- </a> -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="popup-close" onclick="closePopup()">&times;</span>
+      <h2>Welcome to Nuclear Analyzer!</h2>
+      <p>📍 Click on the map to analyze whether you can build an NPP at that location.</p>
+      <ul>
+        <li>🌊 Check for water sources nearby</li>
+        <li>🌳 Evaluate environmental impact (forests, parks)</li>
+        <li>🚧 Assess road and infrastructure availability</li>
+        <li>🏙️ Assess population density</li>
+	<li>📊 Get NPP Compatibility Score</li>
+	<li>⏰ Check Time to build NPP</li>
+      </ul>
+      <p>💡 Tip: Click on the map and get detailed insights!</p>
+    </div>
+  </div>
   
-  <div id="map" style="border: 2px solid black; padding: 10px;"></div>
-    <style>
-      #map { height: 100vh; width: 100vw;}
-        #info-panel {
-            width: 24%;
-            height: 500px;
-            overflow-y: auto;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            float: right;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="/static/main.js"></script>
-
-    <!-- <div id='river-details' style="border: 2px solid black; padding: 10px;"> -->
-      
-    <!-- </div> -->
-    
-    <!-- <script src="/static/display.js"></script> -->
-    <!-- <script src="/static/style.css"></script> -->
-    <!-- <div id="river-list" class="accordion"> -->
-
-      <script> 
-        // // Handle map click event to display data in the side panel (optional)
-        // map.on('click', (e) => {
-        //     const { lat, lng } = e.latlng;
-        //     alert(`Clicked at ${lat}, ${lng}`);
-        // });
-      </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="/static/main.js"></script>
+  <script src="/static/popup.js"></script>
       
 </body>
 </html>
